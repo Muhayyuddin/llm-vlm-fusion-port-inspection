@@ -1,4 +1,4 @@
-# LLM-VLM Fusion: Intelligent Maritime Autonomous Systems
+# LLM-VLM Fusion: Intelligent Maritius Systems
 
 ## 🌊 Overview
 
@@ -31,6 +31,18 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 
 </td>
 </tr>
+<tr>
+<td align="center" colspan="2">
+
+### 🚁 UAV Coordination
+<img src="assets/uav.gif" alt="UAV Autonomous Flight and Coordination" width="400"/>
+
+**Autonomous UAV Operations** *(12x speed)*
+- 3D flight control and mission execution
+- Heterogeneous USV-UAV coordination
+
+</td>
+</tr>
 </table>
 </div>
 
@@ -47,21 +59,13 @@ This project implements a comprehensive autonomous maritime platform featuring:
 
 ## 📁 Project Structure
 
-#### 📂 `nav2/` - USV SLAM & Navigation
-Advanced SLAM and autonomous navigation system for maritime operations with real-time mapping, obstacle avoidance, and ROS2 Nav2 integration.
+This project implements a comprehensive autonomous maritime platform featuring:
 
-#### 📂 `nav_packages/` - USV Control & Guidance
-Low-level control systems featuring PID motion control, dynamic positioning, thrust allocation, and maritime dynamics modeling.
-
-#### 📂 `uav_navigation/` - UAV Control & Guidance
-Comprehensive UAV flight control with mission execution, inspection patterns, survey operations, and USV deck landing capabilities.
-
-#### 📂 `vlm_inspection/` - Vision-Language Model Inspection
-Multi-model VLM system (Florence, Quen2VL, SmolVLM) for real-time camera feed analysis, object detection, and automated inspection reports.
-
-#### 📂 `unified_mission_planner/` - LLM-based Mission Planning
-Intelligent mission planning system using GPT-4 for natural language mission interpretation and heterogeneous USV-UAV coordination.
-Features symbolic mission planning, dependency management, survey operations, and coordinated execution with preconditions.
+- **🗺️ USV SLAM & Navigation** (`nav2/`): Advanced SLAM and autonomous navigation system for maritime operations with real-time mapping, obstacle avoidance, and ROS2 Nav2 integration
+- **🎮 USV Control & Guidance** (`nav_packages/`): Low-level control systems featuring PID motion control, dynamic positioning, thrust allocation, and maritime dynamics modeling
+- **� UAV Control & Guidance** (`uav_navigation/`): Comprehensive UAV flight control with mission execution, inspection patterns, survey operations, and USV deck landing capabilities
+- **�️ Vision-Language Model Inspection** (`vlm_inspection/`): Multi-model VLM system (Florence, Quen2VL, SmolVLM) for real-time camera feed analysis, object detection, and automated inspection reports
+- **🤖 LLM-based Mission Planning** (`unified_mission_planner/`): Intelligent mission planning system using GPT-4 for natural language mission interpretation and heterogeneous USV-UAV coordination with symbolic planning, dependency management, and coordinated execution
 
 ## 🛠️ Installation & Setup
 
