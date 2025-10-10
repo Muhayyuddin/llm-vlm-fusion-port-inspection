@@ -66,6 +66,12 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 </td>
 </tr>
 </table>
+
+## System Integration
+
+</td>
+</tr>
+</table>
 </div>
 
 </table>
