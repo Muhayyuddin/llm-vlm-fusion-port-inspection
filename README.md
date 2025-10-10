@@ -5,7 +5,8 @@ Maritime port inspection is essential for ensuring safety, regulatory compliance
 <table style="border-collapse: collapse; border: none; width: 100%; margin: 0;">
 <tr>
 <td align="center" width="100%" style="padding: 0; border: none;">
-### 🧭 Mapping & SLAM
+          
+### Mapping & SLAM
 <img src="assets/mapping.gif" alt="Real-time SLAM and Mapping" width="400" style="margin: 0; padding: 0;"/>
 **Real-time Maritime SLAM**
 - Simultaneous Localization and Mapping
@@ -14,7 +15,7 @@ Maritime port inspection is essential for ensuring safety, regulatory compliance
 </td>
 <td align="center" width="100%" style="padding: 0; border: none;">
 
-### 🚢 USV Navigation
+### USV Navigation
 <img src="assets/usv-navigation.gif" alt="USV Autonomous Navigation" width="400" style="margin: 0; padding: 0;"/>
 
 **Autonomous Navigation System**
@@ -26,7 +27,7 @@ Maritime port inspection is essential for ensuring safety, regulatory compliance
 <tr>
 <td align="center" width="100%" style="padding: 0; border: none;">
 
-### 🛫 UAV Takeoff
+### UAV Takeoff
 <img src="assets/takeoff.gif" alt="UAV Autonomous Takeoff" width="400" style="margin: 0; padding: 0;"/>
 
 **Autonomous Takeoff Operations**
@@ -36,7 +37,7 @@ Maritime port inspection is essential for ensuring safety, regulatory compliance
 </td>
 <td align="center" width="100%" style="padding: 0; border: none;">
 
-### 🛬 UAV Landing
+### UAV Landing
 <img src="assets/landing.gif" alt="UAV Autonomous Landing" width="400" style="margin: 0; padding: 0;"/>
 
 **Autonomous Landing Operations**
@@ -48,7 +49,7 @@ Maritime port inspection is essential for ensuring safety, regulatory compliance
 <tr>
 <td align="center" colspan="2" style="padding: 0; border: none;">
 
-### 🚁 UAV Coordination
+### UAV Coordination
 <img src="assets/uav.gif" alt="UAV Autonomous Flight and Coordination" width="700" style="margin: 0; padding: 0;"/>
 
 **Autonomous UAV Operations** *(12x speed)*
@@ -89,7 +90,7 @@ Maritime port inspection is essential for ensuring safety, regulatory compliance
 │   image_raw     │    │ slot0/image_raw │    │   VLM Models    │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
-## 📁 Project Structure
+## Project Structure
 
 This project implements a comprehensive autonomous maritime platform featuring:
 
@@ -126,7 +127,7 @@ colcon build --packages-select nav2 nav_packages uav_navigation unified_mission_
 source install/setup.bash
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Launch Maritime Simulation Environment
 ```bash
@@ -207,12 +208,4 @@ Customize mission planning in `unified_mission_planner/config/heterogeneous_prom
 - **Camera Feeds**: `/usv/slot0/image_raw`, `/quadrotor_1/slot0/image_raw`
 - **VLM Analysis**: `/vlm_inspection_results`, `/vlm_detection_annotations`
 
-
-
-## 🙏 Acknowledgments
-
-- **ROS2 Community** for the navigation framework
-- **OpenAI** for GPT-4 integration capabilities
-- **Ignition Gazebo** for simulation environment
-- **Maritime Research Community** for domain expertise
 
