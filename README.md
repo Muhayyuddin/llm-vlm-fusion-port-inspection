@@ -164,48 +164,6 @@ ros2 launch uav_navigation uav_mission_system.launch.py
 ros2 launch unified_mission_planner heterogeneous_mission_system.launch.py
 ```
 
-## 🎯 Mission Capabilities
-
-### Supported Mission Types
-
-#### 🔍 **Survey Operations**
-- **Rectangular Survey**: Perimeter coverage for area inspection
-- **Zigzag Survey**: Complete area coverage with optimal patterns
-- **Adaptive Coverage**: LLM-optimized survey patterns
-
-#### 🔎 **Inspection Missions**
-- **Circular Inspection**: Orbital patterns around targets
-- **Multi-angle Inspection**: Comprehensive target analysis
-- **Structure Assessment**: Maritime infrastructure evaluation
-
-#### 🚢🚁 **Coordinated Operations**
-- **Sequential Execution**: Dependency-based mission coordination
-- **Parallel Operations**: Simultaneous USV-UAV tasks
-- **Adaptive Coordination**: LLM-optimized collaboration
-
-### Example Mission Commands
-```python
-# Survey Command
-"survey_area": {
-    "coordinates": [x1, y1, x2, y2],
-    "altitude": 20.0,
-    "method": "zigzag"  # or "rectangular"
-}
-
-# Inspection Command
-"inspect_target": {
-    "center": [x, y, z],
-    "radius": 25.0,
-    "pattern": "circular"
-}
-
-# Coordinated Landing
-"land_on_usv": {
-    "approach_altitude": 5.0,
-    "landing_threshold": 1.0
-}
-```
-
 ## 🔧 Configuration
 
 ### LLM Configuration
@@ -253,44 +211,7 @@ Customize mission planning in `unified_mission_planner/config/heterogeneous_prom
 - **Camera Feeds**: `/usv/slot0/image_raw`, `/quadrotor_1/slot0/image_raw`
 - **VLM Analysis**: `/vlm_inspection_results`, `/vlm_detection_annotations`
 
-## 🧪 Testing & Validation
 
-### Unit Tests
-```bash
-# Run navigation tests
-colcon test --packages-select nav_packages
-
-# Run mission planning tests
-colcon test --packages-select unified_mission_planner
-```
-
-### Integration Tests
-```bash
-# Test heterogeneous coordination
-ros2 run unified_mission_planner test_coordination.py
-
-# Test survey patterns
-ros2 run uav_navigation test_survey_patterns.py
-```
-
-## 📈 Performance Metrics
-
-- **Mission Success Rate**: >95% completion rate
-- **Navigation Accuracy**: <1m positioning error
-- **Coordination Latency**: <100ms response time
-- **Survey Coverage**: >98% area coverage efficiency
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
@@ -299,13 +220,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Ignition Gazebo** for simulation environment
 - **Maritime Research Community** for domain expertise
 
-## 📞 Contact
-
-For questions and support:
-- **Email**: [your-email@domain.com]
-- **Project Repository**: [GitHub Link]
-- **Documentation**: [Wiki/Documentation Link]
-
----
-
-**🌊 Enabling intelligent autonomous maritime operations through LLM-VLM fusion 🚁🚢**
