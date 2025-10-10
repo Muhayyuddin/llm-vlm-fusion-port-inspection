@@ -9,7 +9,7 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 <div align="center">
 <table style="border-collapse: collapse; border: none;">
 <tr>
-<td align="center" width="50%" style="padding: 0; border: none;">
+<td align="center" width="100%" style="padding: 0; border: none;">
 
 ### 🧭 Mapping & SLAM
 <img src="assets/mapping.gif" alt="Real-time SLAM and Mapping" width="380" style="margin: 0; padding: 0;"/>
@@ -20,7 +20,7 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 
 
 </td>
-<td align="center" width="50%" style="padding: 0; border: none;">
+<td align="center" width="100%" style="padding: 0; border: none;">
 
 ### 🚢 USV Navigation
 <img src="assets/usv-navigation.gif" alt="USV Autonomous Navigation" width="380" style="margin: 0; padding: 0;"/>
@@ -33,7 +33,7 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 </tr>
 
 <tr>
-<td align="center" width="50%" style="padding: 0; border: none;">
+<td align="center" width="100%" style="padding: 0; border: none;">
 
 ### 🛫 UAV Takeoff
 <img src="assets/takeoff.gif" alt="UAV Autonomous Takeoff" width="200" style="margin: 0; padding: 0;"/>
@@ -43,7 +43,7 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 - Flight initialization and stabilization
 
 </td>
-<td align="center" width="50%" style="padding: 0; border: none;">
+<td align="center" width="100%" style="padding: 0; border: none;">
 
 ### 🛬 UAV Landing
 <img src="assets/landing.gif" alt="UAV Autonomous Landing" width="200" style="margin: 0; padding: 0;"/>
