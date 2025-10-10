@@ -4,7 +4,40 @@
 
 The **LLM-VLM Fusion** project is an advanced autonomous maritime system that integrates Large Language Models (LLM) and Vision-Language Models (VLM) for intelligent control and coordination of heterogeneous USV-UAV operations. This system combines natural language understanding, computer vision, and autonomous navigation to enable sophisticated maritime missions including surveillance, inspection, and survey operations.
 
-## 🚀 System Architecture
+## �️ Core Capabilities
+
+<div align="center">
+<table>
+<tr>
+<td align="center" width="50%">
+
+### 🧭 Mapping & SLAM
+<img src="assets/mapping.gif" alt="Real-time SLAM and Mapping" width="400"/>
+
+**Real-time Maritime SLAM**
+- Simultaneous Localization and Mapping
+- Obstacle detection and avoidance
+- Dynamic environment mapping
+- GPS-denied navigation support
+
+</td>
+<td align="center" width="50%">
+
+### 🚢 USV Navigation
+<img src="assets/usv-navigation.gif" alt="USV Autonomous Navigation" width="400"/>
+
+**Autonomous Navigation System**
+- Waypoint following and trajectory tracking
+- Dynamic positioning systems
+- Maritime-specific path planning
+- Real-time obstacle avoidance
+
+</td>
+</tr>
+</table>
+</div>
+
+## �🚀 System Architecture
 
 This project implements a comprehensive autonomous maritime platform featuring:
 
