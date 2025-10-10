@@ -82,11 +82,11 @@ Maritime port inspection is essential for ensuring safety, regulatory compliance
 
 This project implements a comprehensive autonomous maritime platform featuring:
 
-- **🗺️ USV SLAM & Navigation** (`nav2/`): Advanced SLAM and autonomous navigation system for maritime operations with real-time mapping, obstacle avoidance, and ROS2 Nav2 integration
-- **🎮 USV Control & Guidance** (`nav_packages/`): Low-level control systems featuring PID motion control, dynamic positioning, thrust allocation, and maritime dynamics modeling
-- **� UAV Control & Guidance** (`uav_navigation/`): Comprehensive UAV flight control with mission execution, inspection patterns, survey operations, and USV deck landing capabilities
-- **�️ Vision-Language Model Inspection** (`vlm_inspection/`): Multi-model VLM system (Florence, Quen2VL, SmolVLM) for real-time camera feed analysis, object detection, and automated inspection reports
-- **🤖 LLM-based Mission Planning** (`unified_mission_planner/`): Intelligent mission planning system using GPT-4 for natural language mission interpretation and heterogeneous USV-UAV coordination with symbolic planning, dependency management, and coordinated execution
+- **USV SLAM & Navigation** (`nav2/`): Advanced SLAM and autonomous navigation system for maritime operations with real-time mapping, obstacle avoidance, and ROS2 Nav2 integration
+- **USV Control & Guidance** (`nav_packages/`): Low-level control systems featuring PID motion control, dynamic positioning, thrust allocation, and maritime dynamics modeling
+- **UAV Control & Guidance** (`uav_navigation/`): Comprehensive UAV flight control with mission execution, inspection patterns, survey operations, and USV deck landing capabilities
+- **Vision-Language Model Inspection** (`vlm_inspection/`): Multi-model VLM system (Florence, Quen2VL, SmolVLM) for real-time camera feed analysis, object detection, and automated inspection reports
+- **LLM-based Mission Planning** (`unified_mission_planner/`): Intelligent mission planning system using GPT-4 for natural language mission interpretation and heterogeneous USV-UAV coordination with symbolic planning, dependency management, and coordinated execution
 
 ## System Requirements
 
