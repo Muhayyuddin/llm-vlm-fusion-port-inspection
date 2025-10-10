@@ -11,7 +11,7 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 <td align="center" width="100%" style="padding: 0; border: none;">
 
 ### 🧭 Mapping & SLAM
-<img src="assets/mapping.gif" alt="Real-time SLAM and Mapping" width="450" style="margin: 0; padding: 0;"/>
+<img src="assets/mapping.gif" alt="Real-time SLAM and Mapping" width="400" style="margin: 0; padding: 0;"/>
 
 **Real-time Maritime SLAM**
 - Simultaneous Localization and Mapping
@@ -22,7 +22,7 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 <td align="center" width="100%" style="padding: 0; border: none;">
 
 ### 🚢 USV Navigation
-<img src="assets/usv-navigation.gif" alt="USV Autonomous Navigation" width="450" style="margin: 0; padding: 0;"/>
+<img src="assets/usv-navigation.gif" alt="USV Autonomous Navigation" width="400" style="margin: 0; padding: 0;"/>
 
 **Autonomous Navigation System**
 - Waypoint following and trajectory tracking
@@ -35,7 +35,7 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 <td align="center" width="100%" style="padding: 0; border: none;">
 
 ### 🛫 UAV Takeoff
-<img src="assets/takeoff.gif" alt="UAV Autonomous Takeoff" width="450" style="margin: 0; padding: 0;"/>
+<img src="assets/takeoff.gif" alt="UAV Autonomous Takeoff" width="400" style="margin: 0; padding: 0;"/>
 
 **Autonomous Takeoff Operations**
 - Vertical takeoff capabilities
@@ -45,7 +45,7 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 <td align="center" width="100%" style="padding: 0; border: none;">
 
 ### 🛬 UAV Landing
-<img src="assets/landing.gif" alt="UAV Autonomous Landing" width="450" style="margin: 0; padding: 0;"/>
+<img src="assets/landing.gif" alt="UAV Autonomous Landing" width="400" style="margin: 0; padding: 0;"/>
 
 **Autonomous Landing Operations**
 - Precision landing capabilities
