@@ -12,7 +12,7 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 <td align="center" width="50%">
 
 ### 🧭 Mapping & SLAM
-<img src="assets/mapping.gif" alt="Real-time SLAM and Mapping" width="400"/>
+<img src="assets/mapping.gif" alt="Real-time SLAM and Mapping" width="380"/>
 
 **Real-time Maritime SLAM**
 - Simultaneous Localization and Mapping
@@ -23,7 +23,7 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 <td align="center" width="50%">
 
 ### 🚢 USV Navigation
-<img src="assets/usv-navigation.gif" alt="USV Autonomous Navigation" width="400"/>
+<img src="assets/usv-navigation.gif" alt="USV Autonomous Navigation" width="380"/>
 
 **Autonomous Navigation System**
 - Waypoint following and trajectory tracking
