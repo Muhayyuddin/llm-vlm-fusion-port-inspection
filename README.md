@@ -47,19 +47,19 @@ This project implements a comprehensive autonomous maritime platform featuring:
 
 ## 📁 Project Structure
 
-### 📂 `nav2/` - USV SLAM & Navigation
+#### 📂 `nav2/` - USV SLAM & Navigation
 Advanced SLAM and autonomous navigation system for maritime operations with real-time mapping, obstacle avoidance, and ROS2 Nav2 integration.
 
-### 📂 `nav_packages/` - USV Control & Guidance
+#### 📂 `nav_packages/` - USV Control & Guidance
 Low-level control systems featuring PID motion control, dynamic positioning, thrust allocation, and maritime dynamics modeling.
 
-### 📂 `uav_navigation/` - UAV Control & Guidance
+#### 📂 `uav_navigation/` - UAV Control & Guidance
 Comprehensive UAV flight control with mission execution, inspection patterns, survey operations, and USV deck landing capabilities.
 
-### 📂 `vlm_inspection/` - Vision-Language Model Inspection
+#### 📂 `vlm_inspection/` - Vision-Language Model Inspection
 Multi-model VLM system (Florence, Quen2VL, SmolVLM) for real-time camera feed analysis, object detection, and automated inspection reports.
 
-### 📂 `unified_mission_planner/` - LLM-based Mission Planning
+#### 📂 `unified_mission_planner/` - LLM-based Mission Planning
 Intelligent mission planning system using GPT-4 for natural language mission interpretation and heterogeneous USV-UAV coordination.
 Features symbolic mission planning, dependency management, survey operations, and coordinated execution with preconditions.
 
@@ -94,13 +94,13 @@ source install/setup.bash
 ros2 launch mbzirc_ros competition_local.launch.py ign_args:="-v 4 -r coast-port.sdf"
 ```
 
-### 2. Spawn USV with Sensors
+### 2. Spawn USV and UAV with Sensors
 ```bash
 # Spawn USV with LiDAR and RGBD camera
 ros2 launch mbzirc_ign spawn.launch.py name:=usv world:=coast model:=usv x:=-1450 y:=-16.5 z:=0.3 R:=0 P:=0 Y:=0 slot0:=mbzirc_planar_lidar slot1:=mbzirc_rgbd_camera
 
-# Alternative: Spawn USV with HD camera and LiDAR
-ros2 launch mbzirc_ign spawn.launch.py name:=usv world:=coast model:=usv x:=-1450 y:=-16.5 z:=0.3 R:=0 P:=0 Y:=0 slot0:=mbzirc_hd_camera slot1:=mbzirc_planar_lidar
+# Spawn UAV (quadrotor) with HD camera
+ros2 launch mbzirc_ign spawn.launch.py name:=quadrotor_1 world:=coast model:=mbzirc_quadrotor x:=-1450 y:=-16.5 z:=4.3 R:=0 P:=0 Y:=0 slot0:=mbzirc_hd_camera
 ```
 
 ### 3. Launch USV Systems
@@ -133,7 +133,7 @@ export PYTHONPATH=$PYTHONPATH:~/mbzirc_ws/src/nav_packages/usv_control/src
 ros2 run usv_control twist_publisher 
 
 # Start USV navigator
-python3 /home/muhayy/mbzirc_ws/src/nav_packages/navigation/navigation/navigator.py
+python3 ~/mbzirc_ws/src/nav_packages/navigation/navigation/navigator.py
 ```
 
 ### 6. Start Intelligent Mission Planner
