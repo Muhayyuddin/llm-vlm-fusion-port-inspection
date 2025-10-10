@@ -43,6 +43,28 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 
 </td>
 </tr>
+<tr>
+<td align="center" width="50%">
+
+### 🛫 UAV Takeoff
+<img src="assets/takeoff.gif" alt="UAV Autonomous Takeoff" width="600"/>
+
+**Autonomous Takeoff Operations**
+- Vertical takeoff capabilities
+- Flight initialization and stabilization
+
+</td>
+<td align="center" width="50%">
+
+### 🛬 UAV Landing
+<img src="assets/landing.gif" alt="UAV Autonomous Landing" width="600"/>
+
+**Autonomous Landing Operations**
+- Precision landing capabilities
+- USV deck landing coordination
+
+</td>
+</tr>
 </table>
 </div>
 
@@ -79,7 +101,18 @@ This project implements a comprehensive autonomous maritime platform featuring:
 - **�️ Vision-Language Model Inspection** (`vlm_inspection/`): Multi-model VLM system (Florence, Quen2VL, SmolVLM) for real-time camera feed analysis, object detection, and automated inspection reports
 - **🤖 LLM-based Mission Planning** (`unified_mission_planner/`): Intelligent mission planning system using GPT-4 for natural language mission interpretation and heterogeneous USV-UAV coordination with symbolic planning, dependency management, and coordinated execution
 
-## 🛠️ Installation & Setup
+## �️ System Requirements
+
+- **Ubuntu 20.04**
+- **ROS Galactic**
+- **PyTorch**
+
+### Installing Simulator
+To run the code, we first need to install the MBZIRC simulator. The below link contains detailed instructions to install the simulator:
+
+**MBZIRC Simulator**: https://github.com/osrf/mbzirc
+
+## �🛠️ Installation & Setup
 
 ### Prerequisites
 - **ROS2 Galactic** or newer
