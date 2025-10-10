@@ -12,7 +12,7 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 <td align="center" width="50%">
 
 ### 🧭 Mapping & SLAM
-<img src="assets/mapping.gif" alt="Real-time SLAM and Mapping" width="400"/>
+<img src="assets/mapping.gif" alt="Real-time SLAM and Mapping" width="600"/>
 
 **Real-time Maritime SLAM**
 - Simultaneous Localization and Mapping
@@ -23,7 +23,7 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 <td align="center" width="50%">
 
 ### 🚢 USV Navigation
-<img src="assets/usv-navigation.gif" alt="USV Autonomous Navigation" width="400"/>
+<img src="assets/usv-navigation.gif" alt="USV Autonomous Navigation" width="600"/>
 
 **Autonomous Navigation System**
 - Waypoint following and trajectory tracking
@@ -35,7 +35,7 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 <td align="center" colspan="2">
 
 ### 🚁 UAV Coordination
-<img src="assets/uav.gif" alt="UAV Autonomous Flight and Coordination" width="400"/>
+<img src="assets/uav.gif" alt="UAV Autonomous Flight and Coordination" width="600"/>
 
 **Autonomous UAV Operations** *(12x speed)*
 - 3D flight control and mission execution
@@ -46,17 +46,29 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 </table>
 </div>
 
-## �🚀 System Architecture
 
-This project implements a comprehensive autonomous maritime platform featuring:
+## System Integration
 
-- **🤖 LLM-based Mission Planning**: Natural language mission interpretation and execution
-- **👁️ VLM Integration**: Vision-language understanding for environmental awareness
-- **� Real-time Visual Inspection**: Florence, Quen2VL, SmolVLM-powered analysis
-- **�🚢 USV Autonomous Navigation**: Advanced surface vessel control and guidance
-- **🚁 UAV Coordination**: Aerial vehicle integration for comprehensive coverage
-- **🔗 Heterogeneous Coordination**: Seamless USV-UAV collaborative operations
-
+### Communication Architecture
+```
+┌─────────────────┐    ┌─────────────────┐
+│   LLM Mission   │◄──►│   GPT-4 API     │
+│    Planner      │    │   Integration   │
+└─────────┬───────┘    └─────────────────┘
+          │
+          ▼
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   USV Control   │◄──►│   UAV Control   │◄──►│  VLM Inspection │
+│   & Navigation  │    │   & Navigation  │    │    Module      │
+└─────────────────┘    └─────────────────┘    └─────────┬───────┘
+          │                       │                      │
+          ▼                       ▼                      ▼
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│  USV Camera     │    │  UAV Camera     │    │ Florence, Quen2VL│
+│  /usv/slot0/    │    │ /quadrotor_1/   │    │   SmolVLM, etc  │
+│   image_raw     │    │ slot0/image_raw │    │   VLM Models    │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
 ## 📁 Project Structure
 
 This project implements a comprehensive autonomous maritime platform featuring:
@@ -163,28 +175,6 @@ Customize mission planning in `unified_mission_planner/config/heterogeneous_prom
 - USV parameters: `nav_packages/config/usv_navigation_params.yaml`
 - UAV parameters: `uav_navigation/config/uav_mission_params.yaml`
 
-## 📊 System Integration
-
-### Communication Architecture
-```
-┌─────────────────┐    ┌─────────────────┐
-│   LLM Mission   │◄──►│   GPT-4 API     │
-│    Planner      │    │   Integration   │
-└─────────┬───────┘    └─────────────────┘
-          │
-          ▼
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   USV Control   │◄──►│   UAV Control   │◄──►│  VLM Inspection │
-│   & Navigation  │    │   & Navigation  │    │    Module      │
-└─────────────────┘    └─────────────────┘    └─────────┬───────┘
-          │                       │                      │
-          ▼                       ▼                      ▼
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│  USV Camera     │    │  UAV Camera     │    │ Florence, Quen2VL│
-│  /usv/slot0/    │    │ /quadrotor_1/   │    │   SmolVLM, etc  │
-│   image_raw     │    │ slot0/image_raw │    │   VLM Models    │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-```
 
 ### Topic Interface
 - **Mission Commands**: `/uav_mission_command`, `/target_vessel_pose`
