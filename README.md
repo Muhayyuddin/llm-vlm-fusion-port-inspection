@@ -17,8 +17,7 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 **Real-time Maritime SLAM**
 - Simultaneous Localization and Mapping
 - Obstacle detection and avoidance
-- Dynamic environment mapping
-- GPS-denied navigation support
+
 
 </td>
 <td align="center" width="50%">
@@ -28,8 +27,6 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 
 **Autonomous Navigation System**
 - Waypoint following and trajectory tracking
-- Dynamic positioning systems
-- Maritime-specific path planning
 - Real-time obstacle avoidance
 
 </td>
@@ -51,79 +48,16 @@ This project implements a comprehensive autonomous maritime platform featuring:
 ## 📁 Project Structure
 
 ### 📂 `nav2/` - USV SLAM & Navigation
-**Purpose**: Advanced SLAM (Simultaneous Localization and Mapping) and autonomous navigation for USV operations.
-
-**Key Features**:
-- Real-time maritime SLAM implementation
-- Obstacle avoidance and path planning
-- Localization in GPS-denied environments
-- Maritime-specific navigation algorithms
-- Integration with ROS2 Navigation Stack (Nav2)
-
-**Components**:
-- SLAM algorithms for maritime environments
-- Costmap generation and obstacle detection
-- Path planning and trajectory optimization
-- Localization and mapping modules
-
----
+Advanced SLAM and autonomous navigation system for maritime operations with real-time mapping, obstacle avoidance, and ROS2 Nav2 integration.
 
 ### 📂 `nav_packages/` - USV Control & Guidance
-**Purpose**: Low-level control systems and guidance algorithms for USV operations.
-
-**Key Features**:
-- PID-based motion control
-- Dynamic positioning systems
-- Thrust allocation and propulsion control
-- Waypoint following and trajectory tracking
-- Maritime dynamics modeling
-
-**Components**:
-- Controller implementations (PID, MPC)
-- Guidance systems for maritime navigation
-- Thrust vectoring and allocation
-- State estimation and filtering
-- Hardware abstraction layers
-
----
+Low-level control systems featuring PID motion control, dynamic positioning, thrust allocation, and maritime dynamics modeling.
 
 ### 📂 `uav_navigation/` - UAV Control & Guidance
-**Purpose**: Comprehensive UAV control systems with advanced mission capabilities.
-
-**Key Features**:
-- 3D flight control and navigation
-- Mission execution with waypoint management
-- Circular inspection patterns
-- Survey operations (rectangular/zigzag patterns)
-- Landing operations including USV deck landing
-- Obstacle avoidance and safety systems
-
-**Components**:
-- Flight control algorithms
-- Mission executor with pattern generation
-- Takeoff, landing, and hover capabilities
-- Survey pattern algorithms (rectangular, zigzag)
-- Circular inspection around targets
-- Coordinated landing on moving USV platform
-
----
+Comprehensive UAV flight control with mission execution, inspection patterns, survey operations, and USV deck landing capabilities.
 
 ### 📂 `vlm_inspection/` - Vision-Language Model Inspection
-**Purpose**: Advanced visual inspection system using state-of-the-art Vision-Language Models for real-time analysis of camera feeds.
-
-**Key Features**:
-- **🔍 Multi-Model Integration**: Florence, Quen2VL, SmolVLM support
-- **📸 Real-time Processing**: Live camera feed analysis
-- **🧠 Intelligent Detection**: Object recognition and anomaly detection
-- **📝 Natural Language Descriptions**: Automated inspection reports
-- **🚢🚁 Dual Camera Support**: USV and UAV camera integration
-
-**Components**:
-- VLM model inference engines
-- Camera topic subscribers (`/usv/slot0/image_raw`, `/quadrotor_1/slot0/image_raw`)
-- Real-time image processing pipeline
-- Inspection result publishers
-- Model management and switching
+Multi-model VLM system (Florence, Quen2VL, SmolVLM) for real-time camera feed analysis, object detection, and automated inspection reports.
 
 ---
 
