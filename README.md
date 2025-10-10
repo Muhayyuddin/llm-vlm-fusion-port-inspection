@@ -6,17 +6,15 @@ Maritime port inspection is essential for ensuring safety, regulatory compliance
 <tr>
 <td align="center" width="100%" style="padding: 0; border: none;">
           
-### Mapping & SLAM
 <img src="assets/mapping.gif" alt="Real-time SLAM and Mapping" width="400" style="margin: 0; padding: 0;"/>
 
-**Real-time Maritime SLAM**
+**Maritime SLAM**
 - Simultaneous Localization and Mapping
 - Obstacle detection and avoidance
 
 </td>
 <td align="center" width="100%" style="padding: 0; border: none;">
 
-### USV Navigation
 <img src="assets/usv-navigation.gif" alt="USV Autonomous Navigation" width="400" style="margin: 0; padding: 0;"/>
 
 **Autonomous Navigation System**
@@ -28,7 +26,6 @@ Maritime port inspection is essential for ensuring safety, regulatory compliance
 <tr>
 <td align="center" width="100%" style="padding: 0; border: none;">
 
-### UAV Takeoff
 <img src="assets/takeoff.gif" alt="UAV Autonomous Takeoff" width="400" style="margin: 0; padding: 0;"/>
 
 **Autonomous Takeoff Operations**
@@ -38,7 +35,6 @@ Maritime port inspection is essential for ensuring safety, regulatory compliance
 </td>
 <td align="center" width="100%" style="padding: 0; border: none;">
 
-### UAV Landing
 <img src="assets/landing.gif" alt="UAV Autonomous Landing" width="400" style="margin: 0; padding: 0;"/>
 
 **Autonomous Landing Operations**
@@ -50,7 +46,6 @@ Maritime port inspection is essential for ensuring safety, regulatory compliance
 <tr>
 <td align="center" colspan="2" style="padding: 0; border: none;">
 
-### UAV Coordination
 <img src="assets/uav.gif" alt="UAV Autonomous Flight and Coordination" width="700" style="margin: 0; padding: 0;"/>
 
 **Autonomous UAV Operations** *(12x speed)*
