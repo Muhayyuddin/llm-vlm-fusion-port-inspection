@@ -8,6 +8,7 @@ Maritime port inspection is essential for ensuring safety, regulatory compliance
           
 ### Mapping & SLAM
 <img src="assets/mapping.gif" alt="Real-time SLAM and Mapping" width="400" style="margin: 0; padding: 0;"/>
+
 **Real-time Maritime SLAM**
 - Simultaneous Localization and Mapping
 - Obstacle detection and avoidance
