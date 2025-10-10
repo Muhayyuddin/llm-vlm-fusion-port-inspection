@@ -1,0 +1,49 @@
+# PID Controller Configuration for UAV Navigation
+pid_controller:
+  # PID gains for X axis
+  gains_x:
+    kp: 1.0
+    ki: 0.1
+    kd: 0.2
+  
+  # PID gains for Y axis  
+  gains_y:
+    kp: 1.0
+    ki: 0.1
+    kd: 0.2
+  
+  # PID gains for Z axis
+  gains_z:
+    kp: 1.5
+    ki: 0.2
+    kd: 0.3
+  
+  # PID gains for Yaw
+  gains_yaw:
+    kp: 2.0
+    ki: 0.0
+    kd: 0.5
+  
+  # Output limits
+  limits:
+    max_output: 3.0
+    min_output: -3.0
+  
+  # Initial error terms (usually zeros)
+  initial_errors:
+    prev_error_x: 0.0
+    prev_error_y: 0.0
+    prev_error_z: 0.0
+    prev_error_yaw: 0.0
+    
+    integral_x: 0.0
+    integral_y: 0.0
+    integral_z: 0.0
+    integral_yaw: 0.0
+
+# Navigation parameters
+navigation:
+  waypoint_threshold: 0.5
+  max_velocity: 2.0
+  lookahead_distance: 1.0
+  control_frequency: 10.0

@@ -1,0 +1,138 @@
+{
+  "example_mission": {
+    "objective": "Survey Port Crane Zone for anomalies and return to base",
+    "area": {
+      "port_crane_zone": {"x": 1400, "y": 20, "radius": 50},
+      "usv_deck": {"x": 0, "y": 0, "z": 0},
+      "port_dock": {"x": -50, "y": -100}
+    },
+    "plan": [
+      {
+        "action": "Navigate",
+        "robot": "USV",
+        "theta": {
+          "position": {"x": 1350, "y": 20},
+          "speed": 3.0,
+          "orientation": 1.57
+        },
+        "sigma": {}
+      },
+      {
+        "action": "Takeoff",
+        "robot": "UAV",
+        "theta": {
+          "location": "USVDeck",
+          "altitude": 15,
+          "duration": 30
+        },
+        "sigma": {}
+      },
+      {
+        "action": "FlyTo",
+        "robot": "UAV",
+        "theta": {
+          "position": {"x": 1400, "y": 20},
+          "altitude": 15,
+          "speed": 10.0
+        },
+        "sigma": {}
+      },
+      {
+        "action": "Survey",
+        "robot": "UAV",
+        "theta": {
+          "pattern": "Orbit360",
+          "center": {"x": 1400, "y": 20},
+          "radius": 30,
+          "altitude": 15,
+          "duration": 300,
+          "orbits": 3
+        },
+        "sigma": {
+          "sensors": ["camera", "thermal"],
+          "detection_mode": "anomaly",
+          "recording": true
+        }
+      },
+      {
+        "action": "Report",
+        "robot": "UAV",
+        "theta": {
+          "hover_duration": 10
+        },
+        "sigma": {
+          "detection": "Anomaly",
+          "confidence": 0.82,
+          "location": {"x": 1400, "y": 20},
+          "report_format": "json"
+        }
+      },
+      {
+        "action": "FlyTo",
+        "robot": "UAV",
+        "theta": {
+          "location": "HoverPointAboveUSV",
+          "altitude": 15,
+          "relative_offset": {"x": 0, "y": 0, "z": 15}
+        },
+        "sigma": {}
+      },
+      {
+        "action": "LandOnUSV",
+        "robot": "UAV",
+        "theta": {
+          "location": "USVDeck",
+          "approach_speed": 2.0,
+          "precision_mode": true
+        },
+        "sigma": {
+          "landing_sensors": ["lidar", "camera"],
+          "safety_checks": true
+        }
+      },
+      {
+        "action": "GoHome",
+        "robot": "USV",
+        "theta": {
+          "position": {"x": -50, "y": -100},
+          "speed": 4.0,
+          "final_orientation": 0.0
+        },
+        "sigma": {}
+      }
+    ]
+  },
+  
+  "simple_test_mission": {
+    "objective": "Test basic USV-UAV coordination",
+    "area": {
+      "test_area": {"x": 100, "y": 50}
+    },
+    "plan": [
+      {
+        "action": "Navigate",
+        "robot": "USV",
+        "theta": {"position": {"x": 100, "y": 50}, "orientation": 0.0},
+        "sigma": {}
+      },
+      {
+        "action": "Takeoff",
+        "robot": "UAV",
+        "theta": {"location": "USVDeck", "altitude": 10},
+        "sigma": {}
+      },
+      {
+        "action": "FlyTo",
+        "robot": "UAV",
+        "theta": {"position": {"x": 120, "y": 50}, "altitude": 10},
+        "sigma": {}
+      },
+      {
+        "action": "LandOnUSV",
+        "robot": "UAV",
+        "theta": {"location": "USVDeck"},
+        "sigma": {}
+      }
+    ]
+  }
+}

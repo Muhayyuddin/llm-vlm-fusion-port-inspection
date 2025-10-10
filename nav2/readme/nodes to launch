@@ -1,0 +1,15 @@
+ros2 launch mbzirc_ros competition_local.launch.py ign_args:="-v 4 -r simple_demo.sdf"
+
+ros2 launch mbzirc_ign spawn.launch.py name:=usv world:=simple_demo model:=usv x:=-10 y:=28 z:=0.3 R:=0 P:=0 Y:=0 slot0:=mbzirc_naive_spinning_radar
+
+ros2 run ros_ign_bridge parameter_bridge /world/simple_demo/model/usv/model/sensor_0/link/sensor_link/sensor/lidar/scan@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan --ros-args -r /world/simple_demo/model/usv/model/sensor_0/link/sensor_link/sensor/lidar/scan:=/scan
+
+ros2 launch ros2_mapping online_async_launch.py
+
+
+ros2 launch usv_description usv.launch.py 
+
+ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 map odom
+
+ros2 launch nav2_bringup navigation_launch.py params_file:=/home/muhayy/mbzirc_ws/src/usv_description/config/nav2_params.yaml
+

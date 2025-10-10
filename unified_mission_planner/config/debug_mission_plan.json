@@ -1,0 +1,125 @@
+{
+    "mission_plan": {
+        "mission_id": "HETERO_MISSION_2022_04_12_140000",
+        "objective": "To inspect the crane via aerial inspection using UAV while the USV provides navigation and surveillance assistance",
+        "total_steps": 8,
+        "estimated_duration": "18 minutes",
+        "steps": [
+             {
+                "step_id": 1,
+                "robot": "UAV",
+                "action": "takeoff_to",
+                "parameters": {
+                    "theta": {
+                        "x": -1385.0,
+                        "y": -82.0,
+                        "z": 15.0,
+                        "climb_rate": 2.0
+                    },
+                    "sigma": {
+                        "flight_mode": "stable_hover",
+                        "sensors": "navigation_active"
+                    }
+                },
+                "dependencies": [],
+                "description": "UAV takes off after USV reaches surveillance zone"
+            },    
+             {
+                "step_id": 2,
+                "robot": "UAV",
+                "action": "fly_to",
+                "parameters": {
+                    "theta": {
+                        "x": -1385.0,
+                        "y": -110.0,
+                        "z": 15.0,
+                        "climb_rate": 2.0
+                    },
+                    "sigma": {
+                        "flight_mode": "stable_hover",
+                        "sensors": "navigation_active"
+                    }
+                },
+                "dependencies": [1],
+                "description": "UAV takes off after USV reaches surveillance zone"
+            },    
+            {
+                "step_id": 4,
+                "robot": "UAV",
+                "action": "record_data",
+                "parameters": {
+                    "theta": {
+                        "duration": 5.0
+                    },
+                    "sigma": {
+                        "camera_mode": "active"
+                    }
+                },
+                "dependencies": [3],
+                "description": "UAV records inspection data"
+            },
+            {
+                "step_id": 5,
+                "robot": "UAV",
+                "action": "fly_to",
+                "parameters": {
+                    "theta": {
+                        "x": -1385.0,
+                        "y": -78.0,
+                        "z": 15.0,
+                        "speed": 2.0
+                    },
+                    "sigma": {
+                        "flight_mode": "stable_hover",
+                        "sensors": "navigation_active"
+                    }
+                },
+                "dependencies": [4],
+                "description": "UAV flies to USV position for landing"
+            },
+            {
+                "step_id": 6,
+                "robot": "UAV",
+                "action": "land_on_usv",
+                "parameters": {
+                    "theta": {},
+                    "sigma": {
+                        "flight_mode": "precision_land",
+                        "sensors": "tracking_active"
+                    }
+                },
+                "dependencies": [5],
+                "description": "UAV lands on USV using odometry tracking"
+            },
+            {
+                "step_id": 7,
+                "robot": "USV",
+                "action": "move_to",
+                "parameters": {
+                    "theta": {
+                        "x": -1450.0,
+                        "y": -16.0,
+                        "z": 1.0,
+                        "approach_speed": 2.0
+                    },
+                    "sigma": {
+                        "navigation_sensors": "active",
+                        "collision_avoidance": "enabled"
+                    }
+                },
+                "dependencies": [6],
+                "description": "USV returns to home base with landed UAV"
+            }
+        ]
+    },
+    "dependency_graph": {
+        "spatial_dependencies": ["UAV maintains 10m minimum separation from obstacles"],
+        "sequential_dependencies": ["UAV actions depend on USV positioning"],
+        "causal_dependencies": ["USV navigation completion → UAV takeoff authorization"]
+    },
+    "execution_strategy": {
+        "coordination_points": ["Initial positioning", "Inspection synchronization", "Data collection", "Return sequence"],
+        "safety_constraints": ["Minimum separation distances", "Weather monitoring", "Communication requirements"],
+        "contingency_plans": ["Emergency return procedures", "Communication loss protocols", "System failure responses"]
+    }
+}

@@ -1,0 +1,187 @@
+#!/usr/bin/env python3
+"""
+Dependency Graph Visualization Generator
+Creates visual representations of mission dependency graphs for research documentation
+"""
+
+def generate_dependency_graph_ascii():
+    """Generate ASCII art dependency graph"""
+    
+    graph = """
+╔══════════════════════════════════════════════════════════════════════════════════╗
+║                    HETEROGENEOUS USV-UAV MISSION DEPENDENCY GRAPH                ║
+╚══════════════════════════════════════════════════════════════════════════════════╝
+
+Mission Actions (Symbolic Representation):
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│ τ₀: Navigate(USV, {pos:(1400,20), θ:90°, speed:3.0}, {})                       │
+│ τ₁: Takeoff(UAV, {loc:USVDeck, alt:15m, dur:30s}, {})                          │  
+│ τ₂: FlyTo(UAV, {pos:(1400,20), alt:15m, speed:10.0}, {})                       │
+│ τ₃: Survey(UAV, {pattern:Orbit360, alt:15m, dur:300s}, {sensors:[cam,thermal]})│
+│ τ₄: Report(UAV, {hover:10s}, {detect:Anomaly, conf:0.82, format:json})         │
+│ τ₅: FlyTo(UAV, {loc:HoverAboveUSV, alt:15m}, {})                               │
+│ τ₆: LandOnUSV(UAV, {loc:USVDeck, speed:2.0}, {sensors:[lidar], safety:true})   │
+│ τ₇: GoHome(USV, {pos:(0,0), speed:4.0, θ:0°}, {})                              │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+Dependency Relationships:
+                                    
+    ┌─────────────┐                   Legend:
+    │     τ₀      │                   ═══► Spatial Dependency
+    │Navigate(USV)│                   ───► Sequential Dependency  
+    │   Position  │                   ╭─╮  Robot Type
+    └──────┬──────┘                   │U│  USV Action
+           ║ Spatial dependency       │A│  UAV Action
+           ║ (UAV needs USV platform) │ │
+           ▼                          ╰─╯
+    ┌─────────────┐
+    │     τ₁      │ ╭─╮
+    │ Takeoff(UAV)│ │A│
+    │  From Deck  │ ╰─╯
+    └──────┬──────┘
+           │ Sequential
+           ▼
+    ┌─────────────┐
+    │     τ₂      │ ╭─╮
+    │ FlyTo(UAV)  │ │A│
+    │  To Target  │ ╰─╯  
+    └──────┬──────┘
+           │ Sequential
+           ▼
+    ┌─────────────┐
+    │     τ₃      │ ╭─╮     ┌─ Parallel Execution Zone ─┐
+    │Survey(UAV)  │ │A│     │ USV can maintain position │
+    │   Orbit     │ ╰─╯     │ while UAV performs survey │
+    └──────┬──────┘         └───────────────────────────┘
+           │ Sequential
+           ▼
+    ┌─────────────┐
+    │     τ₄      │ ╭─╮
+    │Report(UAV)  │ │A│
+    │  Results    │ ╰─╯
+    └──────┬──────┘
+           │ Sequential  
+           ▼
+    ┌─────────────┐
+    │     τ₅      │ ╭─╮
+    │ FlyTo(UAV)  │ │A│
+    │ Return Path │ ╰─╯
+    └──────┬──────┘
+           ║ Spatial dependency
+           ║ (USV must be stable for landing)
+           ▼
+    ┌─────────────┐
+    │     τ₆      │ ╭─╮
+    │LandOnUSV    │ │A│
+    │  On Deck    │ ╰─╯
+    └──────┬──────┘
+           │ Mission completion
+           ▼
+    ┌─────────────┐
+    │     τ₇      │ ╭─╮
+    │ GoHome(USV) │ │U│
+    │Return to Base│ ╰─╯
+    └─────────────┘
+
+Dependency Matrix:
+       τ₀ τ₁ τ₂ τ₃ τ₄ τ₅ τ₆ τ₇
+    τ₀ │0│0│0│0│0│0│0│0│
+    τ₁ │1│0│0│0│0│0│0│0│  ← τ₁ depends on τ₀
+    τ₂ │0│1│0│0│0│0│0│0│  ← τ₂ depends on τ₁  
+    τ₃ │0│0│1│0│0│0│0│0│  ← τ₃ depends on τ₂
+    τ₄ │0│0│0│1│0│0│0│0│  ← τ₄ depends on τ₃
+    τ₅ │0│0│0│0│1│0│0│0│  ← τ₅ depends on τ₄
+    τ₆ │0│0│0│0│0│1│0│0│  ← τ₆ depends on τ₅
+    τ₇ │0│0│0│0│0│0│1│0│  ← τ₇ depends on τ₆
+
+Execution Timeline with Dependencies:
+┌─────┬─────────────────┬─────────────────┬──────────────────────────────────┐
+│Time │     Action      │    Robot        │         Dependencies Status      │
+├─────┼─────────────────┼─────────────────┼──────────────────────────────────┤
+│ t₀  │ Execute τ₀      │ USV Navigate    │ No dependencies - Start          │
+│ t₁  │ Complete τ₀     │ USV Ready       │ τ₀ satisfied → Enable τ₁         │
+│ t₁  │ Execute τ₁      │ UAV Takeoff     │ deps(τ₁) = {τ₀} ✓               │
+│ t₂  │ Complete τ₁     │ UAV Airborne    │ τ₁ satisfied → Enable τ₂         │
+│ t₂  │ Execute τ₂      │ UAV Flying      │ deps(τ₂) = {τ₁} ✓               │
+│ t₃  │ Complete τ₂     │ UAV at Target   │ τ₂ satisfied → Enable τ₃         │
+│ t₃  │ Execute τ₃      │ UAV Surveying   │ deps(τ₃) = {τ₂} ✓               │
+│ t₄  │ Complete τ₃     │ UAV Survey Done │ τ₃ satisfied → Enable τ₄         │
+│ t₄  │ Execute τ₄      │ UAV Reporting   │ deps(τ₄) = {τ₃} ✓               │
+│ t₅  │ Complete τ₄     │ UAV Report Sent │ τ₄ satisfied → Enable τ₅         │
+│ t₅  │ Execute τ₅      │ UAV Returning   │ deps(τ₅) = {τ₄} ✓               │
+│ t₆  │ Complete τ₅     │ UAV Above USV   │ τ₅ satisfied → Enable τ₆         │
+│ t₆  │ Execute τ₆      │ UAV Landing     │ deps(τ₆) = {τ₅} ✓               │
+│ t₇  │ Complete τ₆     │ UAV on Deck     │ τ₆ satisfied → Enable τ₇         │
+│ t₇  │ Execute τ₇      │ USV Going Home  │ deps(τ₇) = {τ₆} ✓               │
+│ t₈  │ Complete τ₇     │ Mission End     │ All dependencies satisfied ✓     │
+└─────┴─────────────────┴─────────────────┴──────────────────────────────────┘
+
+Critical Synchronization Points:
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║ 1. USV Positioning (τ₀) → UAV Takeoff (τ₁): Spatial Platform Dependency      ║
+║ 2. UAV Survey (τ₃): Allows parallel USV position maintenance                 ║  
+║ 3. UAV Landing (τ₆): Requires stable USV platform from previous actions     ║
+║ 4. Mission Completion (τ₇): Final coordination for safe return              ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+"""
+    return graph
+
+def generate_mathematical_representation():
+    """Generate mathematical representation of the dependency graph"""
+    
+    math_repr = """
+Mathematical Formalization of Dependency Graph:
+
+Given a mission plan M = {τ₀, τ₁, ..., τₙ₋₁} where each τᵢ = aᵢ(robot, {θᵢ}, {σᵢ})
+
+Dependency Graph Definition:
+G = (V, E, D) where:
+• V = {τᵢ | i ∈ [0, n-1]} (vertex set of mission actions)  
+• E ⊆ V × V (edge set representing dependencies)
+• D: V → P(V) (dependency function)
+
+Dependency Types:
+1. Spatial Dependencies: D_spatial(τⱼ) = {τᵢ | location(τᵢ) enables location(τⱼ)}
+2. Sequential Dependencies: D_seq(τⱼ) = {τᵢ | robot(τᵢ) = robot(τⱼ) ∧ i < j}  
+3. Causal Dependencies: D_causal(τⱼ) = {τᵢ | output(τᵢ) ∈ input(τⱼ)}
+
+Total Dependencies:
+D(τⱼ) = D_spatial(τⱼ) ∪ D_seq(τⱼ) ∪ D_causal(τⱼ)
+
+Execution Conditions:
+∀τⱼ ∈ V: executable(τⱼ, t) ⟺ D(τⱼ) ⊆ completed(t)
+
+where completed(t) = {τᵢ ∈ V | finish_time(τᵢ) ≤ t}
+
+Coordination Algorithm:
+1. Initialize: ready_set = {τᵢ ∈ V | D(τᵢ) = ∅}
+2. While |completed| < |V|:
+   a. Execute all τᵢ ∈ ready_set in parallel
+   b. Monitor for task completion events
+   c. Update: ready_set = {τⱼ ∈ V | D(τⱼ) ⊆ completed ∧ τⱼ ∉ completed}
+3. Return: mission_completed
+
+Dependency Graph Properties:
+• Acyclic: Ensures mission termination
+• Connected: All actions reachable from initial state  
+• Minimal: No redundant dependencies
+• Real-time Resolvable: Efficient execution checking
+
+Safety Invariants:
+• ∀t: |executing_actions_per_robot(t)| ≤ 1
+• ∀τᵢ ∈ critical_actions: D(τᵢ) must be strictly satisfied
+• ∀(τᵢ, τⱼ) ∈ spatial_deps: position_stable(robot(τᵢ)) during exec(τⱼ)
+"""
+    return math_repr
+
+if __name__ == "__main__":
+    print("Generating Dependency Graph Documentation...")
+    
+    with open("dependency_graph_visual.txt", "w") as f:
+        f.write(generate_dependency_graph_ascii())
+        f.write("\n\n" + "="*80 + "\n\n")
+        f.write(generate_mathematical_representation())
+    
+    print("Dependency graph visualization saved to dependency_graph_visual.txt")
+    print("ASCII Graph:")
+    print(generate_dependency_graph_ascii())

@@ -1,0 +1,33 @@
+# Florence-2 Configuration
+florence:
+  # Model configuration
+  model_name: "microsoft/Florence-2-large"  # or "microsoft/Florence-2-base" for smaller model
+  
+  # Task configuration
+  default_task: "<MORE_DETAILED_CAPTION>"  # Default task for image description
+  
+  # Performance settings
+  auto_load_model: true  # Whether to load model automatically on startup
+  max_new_tokens: 1024   # Maximum tokens for generation
+  num_beams: 3          # Number of beams for beam search
+  
+  # Device settings (auto-detected if not specified)
+  # device: "cuda"      # "cuda" or "cpu"
+  # torch_dtype: "float16"  # "float16" or "float32"
+
+# ROS2 Topic configuration
+topics:
+  input_image: "camera/image_raw"
+  output_description: "florence/description"
+
+# Available Florence-2 tasks
+# Use these values for the 'task' parameter
+available_tasks:
+  - "<CAPTION>"                  # Basic image caption
+  - "<DETAILED_CAPTION>"         # Detailed image caption  
+  - "<MORE_DETAILED_CAPTION>"    # Very detailed image caption
+  - "<OD>"                       # Object detection
+  - "<DENSE_REGION_CAPTION>"     # Dense region captioning
+  - "<REGION_PROPOSAL>"          # Region proposal
+  - "<OCR>"                      # Optical character recognition
+  - "<OCR_WITH_REGION>"          # OCR with region information

@@ -1,0 +1,8 @@
+source /opt/ros/galactic/setup.bash
+source install/setup.bash
+source /usr/share/colcon_cd/function/colcon_cd.sh
+export _colcon_cd_root=~/mbzirc_ws
+source ~/mbzirc_ws/install/setup.bash
+
+export TURTLEBOT3_MODEL=burger
+export GAZEBO_MODEL_PATH=~/mbzirc_ws/src/ros2_explorer/explorer_gazebo/models

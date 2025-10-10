@@ -1,0 +1,17 @@
+Important Tips & Tricks
+=======================
+
+Below are some usefull commands tips to work with ignition and ros2.
+
+Set the static transformation between map and odom frame to math ``0 0 0``. ::
+
+    ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 map odom
+
+To view the transformation frames tree. ::
+
+    ros2 run tf2_tools view_frames 
+
+
+Call *ros-ign-bridge* to bridge the lidar data from ign topic ``/world/simple_demo/model/usv/model/sensor_0/link/sensor_link/sensor/lidar/scan`` to ros2 topic ``/scan``. ::
+
+    ros2 run ros_ign_bridge parameter_bridge /world/simple_demo/model/usv/model/sensor_0/link/sensor_link/sensor/lidar/scan@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan --ros-args -r /world/simple_demo/model/usv/model/sensor_0/link/sensor_link/sensor/lidar/scan:=/scan

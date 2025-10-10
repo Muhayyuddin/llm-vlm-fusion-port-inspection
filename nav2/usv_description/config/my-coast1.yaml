@@ -1,0 +1,7 @@
+image: my-coast1.pgm
+mode: trinary
+resolution: 1
+origin: [-1.49e+03, -442, 0]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.25

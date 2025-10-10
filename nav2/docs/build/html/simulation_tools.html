@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulation Tools &mdash; usv_navigation_docs 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Important Tips &amp; Tricks" href="tips_and_tricks.html" />
+    <link rel="prev" title="Packages description" href="package_description.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> usv_navigation_docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="navigation_theory.html">USV Navigation Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="package_description.html">Packages description</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Simulation Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#slam-tool-box">Slam-tool-box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#navigation2-nav2">Navigation2 (Nav2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#robot-localization">Robot Localization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cartographer">Cartographer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tips_and_tricks.html">Important Tips &amp; Tricks</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">usv_navigation_docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Simulation Tools</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/simulation_tools.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="simulation-tools">
+<h1>Simulation Tools<a class="headerlink" href="#simulation-tools" title="Permalink to this heading"></a></h1>
+<p>Below is the list of third party tools (ros2 packages) that are used for usv navigation.</p>
+<section id="slam-tool-box">
+<h2>Slam-tool-box<a class="headerlink" href="#slam-tool-box" title="Permalink to this heading"></a></h2>
+<p>Slam-tool-box is used to build the map of the environment. Inorder to build the map following nodes should be running</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Simulation should be running in ignition and usv spawned alog with lidar sensor.</p></li>
+<li><p>Transformation between odom to usv frame should be broadcast</p></li>
+<li><p>Transformation between map to odom should be define.</p></li>
+<li><p>Launch slam-tool-box.</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Build the workspace by running <code class="docutils literal notranslate"><span class="pre">IGNITION_VERSION=fortress</span> <span class="pre">colcon</span> <span class="pre">build</span> <span class="pre">--merge-install</span></code>.</p>
+</div>
+<p>below is the list of the launch files that is will launch the above states nodes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">launch</span> <span class="n">mbzirc_ros</span> <span class="n">competition_local</span><span class="o">.</span><span class="n">launch</span><span class="o">.</span><span class="n">py</span> <span class="n">ign_args</span><span class="o">:=</span><span class="s2">&quot;-v 4 -r simple_demo.sdf&quot;</span>
+<span class="n">ros2</span> <span class="n">launch</span> <span class="n">mbzirc_ign</span> <span class="n">spawn</span><span class="o">.</span><span class="n">launch</span><span class="o">.</span><span class="n">py</span> <span class="n">name</span><span class="o">:=</span><span class="n">usv</span> <span class="n">world</span><span class="o">:=</span><span class="n">simple_demo</span> <span class="n">model</span><span class="o">:=</span><span class="n">usv</span> <span class="n">x</span><span class="o">:=-</span><span class="mi">40</span> <span class="n">y</span><span class="o">:=</span><span class="mi">0</span> <span class="n">z</span><span class="o">:=</span><span class="mf">0.3</span> <span class="n">R</span><span class="o">:=</span><span class="mi">0</span> <span class="n">P</span><span class="o">:=</span><span class="mi">0</span> <span class="n">Y</span><span class="o">:=</span><span class="mi">0</span> <span class="n">slot0</span><span class="o">:=</span><span class="n">mbzirc_planar_lidar</span> <span class="n">slot1</span><span class="o">:=</span><span class="n">mbzirc_rgbd_camera</span>
+<span class="n">ros2</span> <span class="n">launch</span> <span class="n">usv_description</span> <span class="n">usv</span><span class="o">.</span><span class="n">launch</span><span class="o">.</span><span class="n">py</span>
+<span class="n">ros2</span> <span class="n">run</span> <span class="n">custom_tf_broadcaster</span> <span class="n">publish_odometry_and_tf</span>
+<span class="n">ros2</span> <span class="n">launch</span> <span class="n">ros2_mapping</span> <span class="n">online_async_launch</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Run the above states commands in different terminals. whenever opens the new terminal dont forget to run <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/mbzirc_ws/install/setup.bash</span></code>.</p>
+</div>
+<p>Once the map is completed, run the following command to save the map.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">run</span> <span class="n">nav2_map_server</span> <span class="n">map_sarver_cli</span> <span class="o">-</span><span class="n">f</span> <span class="n">my_map</span>
+</pre></div>
+</div>
+</section>
+<section id="navigation2-nav2">
+<h2>Navigation2 (Nav2)<a class="headerlink" href="#navigation2-nav2" title="Permalink to this heading"></a></h2>
+<p>Navigation2 is used for autonomous navigation. Once the map is saved. the following nodes are required to load the map.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>map_server</p></li>
+<li><p>nav2_lifecycle_manager</p></li>
+</ul>
+</div></blockquote>
+<p>The following command will launch these nodes with required settings.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">launch</span> <span class="n">ros2_mapping</span> <span class="n">map_bringsup</span><span class="o">.</span><span class="n">launch</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>The following command will launch the nav2  for path path planning along with the required configurations.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">launch</span> <span class="n">nav2_bringup</span> <span class="n">navigation_launch</span><span class="o">.</span><span class="n">py</span> <span class="s1">&#39;params_file:=/home/muhayy/mbzirc_ws/src/usv_description/config/nav2_params.yaml&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="robot-localization">
+<h2>Robot Localization<a class="headerlink" href="#robot-localization" title="Permalink to this heading"></a></h2>
+</section>
+<section id="cartographer">
+<h2>Cartographer<a class="headerlink" href="#cartographer" title="Permalink to this heading"></a></h2>
+<p>Cartographer is used to build the map using lidar and IMU.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To run the cartographer turtlebot3 example, source the following in the terminal.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ros</span><span class="o">/</span><span class="n">galactic</span><span class="o">/</span><span class="n">setup</span><span class="o">.</span><span class="n">bash</span>
+<span class="n">source</span> <span class="n">install</span><span class="o">/</span><span class="n">setup</span><span class="o">.</span><span class="n">bash</span>
+<span class="n">source</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">colcon_cd</span><span class="o">/</span><span class="n">function</span><span class="o">/</span><span class="n">colcon_cd</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">export</span> <span class="n">_colcon_cd_root</span><span class="o">=~/</span><span class="n">mbzirc_ws</span>
+<span class="n">source</span> <span class="o">~/</span><span class="n">mbzirc_ws</span><span class="o">/</span><span class="n">install</span><span class="o">/</span><span class="n">setup</span><span class="o">.</span><span class="n">bash</span>
+<span class="n">export</span> <span class="n">TURTLEBOT3_MODEL</span><span class="o">=</span><span class="n">burger</span>
+<span class="n">export</span> <span class="n">GAZEBO_MODEL_PATH</span><span class="o">=~/</span><span class="n">mbzirc_ws</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">ros2_explorer</span><span class="o">/</span><span class="n">explorer_gazebo</span><span class="o">/</span><span class="n">models</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="package_description.html" class="btn btn-neutral float-left" title="Packages description" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tips_and_tricks.html" class="btn btn-neutral float-right" title="Important Tips &amp; Tricks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Muhayy Ud Din.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

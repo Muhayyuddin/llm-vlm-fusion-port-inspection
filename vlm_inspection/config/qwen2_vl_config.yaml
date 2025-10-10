@@ -1,0 +1,210 @@
+# Qwen2-VL Configuration
+qwen2_vl:
+  # Model configuration
+  model_name: "Qwen/Qwen2-VL-2B-Instruct"  # Default 2B model
+  # Alternative models:
+  # "Qwen/Qwen2-VL-7B-Instruct"     # 7B model (higher accuracy, more memory)
+  # "Qwen/Qwen2.5-VL-2B-Instruct"   # Qwen2.5 2B model
+  # "Qwen/Qwen2.5-VL-3B-Instruct"   # Qwen2.5 3B model
+  # "Qwen/Qwen2.5-VL-7B-Instruct"   # Qwen2.5 7B model
+  
+  # Performance settings
+  auto_load_model: true     # Whether to load model automatically on startup
+  max_new_tokens: 512      # Maximum tokens for generation (2B model default)
+  temperature: 0.0         # Temperature for generation (0.0 for deterministic)
+  do_sample: false         # Whether to use sampling
+  
+  # Device settings (auto-detected if not specified)
+  # device: "cuda"         # "cuda" or "cpu"
+  # torch_dtype: "float16" # "float16" or "float32"
+  
+  # Language and analysis settings
+  language_mode: "english"  # "english", "chinese", "bilingual"
+  threat_sensitivity: "medium"  # "low", "medium", "high"
+  
+  # Analysis features
+  enable_compliance_check: true      # Enable regulatory compliance analysis
+  enable_scene_understanding: true   # Enable multi-perspective scene analysis
+  enable_advanced_vqa: true         # Enable advanced visual question answering
+  
+  # Surveillance configuration
+  analysis_rate: 1.0  # Analysis frequency in Hz
+  
+# ROS2 Topic configuration
+topics:
+  input_image: "/quadrotor_1/slot0/image_raw"
+  surveillance_report: "/qwen2_vl/surveillance_report"
+  compliance_report: "/qwen2_vl/compliance_report"
+  scene_analysis: "/qwen2_vl/scene_analysis"
+
+# Surveillance prompts and questions
+surveillance:
+  # Main surveillance prompt (English)
+  primary_prompt_en: |
+    Conduct a comprehensive security analysis of this maritime port surveillance image.
+    Perform detailed assessment covering:
+    1. Personnel identification and authorization status
+    2. Vehicle compliance and operational appropriateness
+    3. Safety hazards and environmental risk factors
+    4. Security violations, suspicious activities, or policy breaches
+    5. Operational efficiency and workflow compliance
+    6. Infrastructure integrity and maintenance status
+    Provide detailed observations with confidence assessments and specific location references.
+  
+  # Main surveillance prompt (Chinese)
+  primary_prompt_zh: |
+    对这张海港监控图像进行全面的安全分析。执行详细评估，包括：
+    1. 人员识别和授权状态
+    2. 车辆合规性和操作适当性
+    3. 安全隐患和环境风险因素
+    4. 安全违规、可疑活动或政策违反
+    5. 操作效率和工作流程合规性
+    6. 基础设施完整性和维护状态
+    请提供详细观察结果，包括置信度评估和具体位置参考。
+  
+  # VQA questions for detailed analysis
+  vqa_questions_en:
+    - "How many personnel are visible and what specific activities are they engaged in?"
+    - "What types of vehicles and equipment are present, and are they operating within authorized parameters?"
+    - "Are there any immediate safety hazards, environmental risks, or emergency situations visible?"
+    - "Do you observe any security violations, unauthorized access, or suspicious behavioral patterns?"
+    - "What is the current operational status and efficiency level of this port facility area?"
+    - "Are there any infrastructure defects, equipment malfunctions, or maintenance requirements visible?"
+    - "What is the overall compliance status with maritime safety and security protocols?"
+    - "Can you identify any potential process improvements or optimization opportunities?"
+  
+  vqa_questions_zh:
+    - "有多少工作人员可见，他们在从事什么具体活动？"
+    - "现场有什么类型的车辆和设备，它们是否在授权参数内运行？"
+    - "是否有任何直接的安全隐患、环境风险或紧急情况？"
+    - "是否观察到任何安全违规、未经授权的访问或可疑行为模式？"
+    - "这个港口设施区域的当前运营状态和效率水平如何？"
+    - "是否有任何基础设施缺陷、设备故障或维护要求？"
+    - "与海事安全和保安协议的整体合规状态如何？"
+    - "能否识别任何潜在的流程改进或优化机会？"
+
+# Maritime safety regulations
+regulations:
+  # English regulations
+  safety_regulations_en: |
+    Comprehensive Maritime Port Safety and Security Regulations:
+    - All personnel must wear high-visibility safety equipment and proper PPE
+    - Vehicle access limited to authorized operational trucks, forklifts, and service vehicles
+    - No unauthorized personnel in restricted operational zones
+    - Smoking and open flames prohibited near cargo and fuel areas
+    - Container stacking must follow international safety height and stability guidelines
+    - Clear emergency evacuation routes must be maintained at all times
+    - All equipment must display current safety inspection certifications
+    - Security cameras must have unobstructed views of critical areas
+    - Environmental spill containment systems must be readily accessible
+    - Communication devices required for all operational personnel
+  
+  # Chinese regulations
+  safety_regulations_zh: |
+    全面的海事港口安全和保安规定：
+    - 所有人员必须穿戴高可见度安全设备和适当的个人防护装备
+    - 车辆通行仅限于授权的操作卡车、叉车和服务车辆
+    - 受限操作区域内不得有未经授权的人员
+    - 货物和燃料区域附近禁止吸烟和明火
+    - 集装箱堆叠必须遵循国际安全高度和稳定性指导原则
+    - 必须始终保持畅通的紧急疏散路线
+    - 所有设备必须显示当前的安全检查认证
+    - 安全摄像头必须对关键区域保持无阻挡的视野
+    - 环境泄漏控制系统必须易于使用
+    - 所有操作人员都需要通信设备
+
+# Threat assessment configuration
+threat_assessment:
+  # Security indicators with severity levels
+  critical_indicators:
+    - "weapon"
+    - "gun"
+    - "knife"
+    - "explosive"
+    - "bomb"
+    - "dangerous device"
+    - "fire"
+    - "explosion"
+    - "emergency"
+    - "medical emergency"
+    - "accident"
+  
+  high_indicators:
+    - "unauthorized"
+    - "suspicious" 
+    - "intruder"
+    - "violation"
+    - "breach"
+    - "trespassing"
+    - "theft"
+    - "vandalism"
+    - "sabotage"
+    - "unauthorized access"
+  
+  medium_indicators:
+    - "person"
+    - "people"
+    - "individual"
+    - "unauthorized vehicle"
+    - "improper equipment"
+    - "safety concern"
+    - "maintenance issue"
+    - "protocol deviation"
+  
+  safety_indicators:
+    - "hazard"
+    - "danger"
+    - "unsafe"
+    - "risk"
+    - "spill"
+    - "leak"
+    - "structural damage"
+    - "equipment failure"
+    - "environmental concern"
+  
+  compliance_indicators:
+    - "violation"
+    - "non-compliant"
+    - "improper"
+    - "missing equipment"
+    - "inadequate"
+    - "regulation breach"
+    - "safety equipment missing"
+  
+  # Sensitivity multipliers
+  sensitivity_multipliers:
+    low: 0.7
+    medium: 1.0
+    high: 1.3
+
+# Model variants information
+model_variants:
+  "Qwen/Qwen2-VL-2B-Instruct":
+    parameters: "2B"
+    memory_requirement: "~4GB VRAM"
+    speed: "Fast"
+    recommended_for: "General surveillance, real-time analysis"
+    
+  "Qwen/Qwen2-VL-7B-Instruct":
+    parameters: "7B"
+    memory_requirement: "~14GB VRAM"
+    speed: "Medium"
+    recommended_for: "High-accuracy analysis, detailed investigations"
+    
+  "Qwen/Qwen2.5-VL-2B-Instruct":
+    parameters: "2B"
+    memory_requirement: "~4GB VRAM"
+    speed: "Fast"
+    recommended_for: "Latest model, improved performance"
+    
+  "Qwen/Qwen2.5-VL-3B-Instruct":
+    parameters: "3B"
+    memory_requirement: "~6GB VRAM"
+    speed: "Medium-Fast"
+    recommended_for: "Balanced performance and accuracy"
+    
+  "Qwen/Qwen2.5-VL-7B-Instruct":
+    parameters: "7B"
+    memory_requirement: "~14GB VRAM"
+    speed: "Medium"
+    recommended_for: "Highest accuracy, comprehensive analysis"

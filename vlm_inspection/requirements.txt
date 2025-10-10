@@ -1,0 +1,32 @@
+# Core VLM dependencies
+torch>=1.9.0
+transformers>=4.21.0
+pillow>=8.0.0
+
+# Florence-2 dependencies
+# (covered by transformers)
+
+# BLIP2 dependencies  
+# (covered by transformers)
+
+# T5 dependencies
+# (covered by transformers)
+
+# nanoVLM dependencies (~222M parameters)
+# Requires latest transformers for compact models
+transformers>=4.35.0
+
+# SmolVLM dependencies (256M/500M parameters)
+# Requires HuggingFace hub access
+huggingface-hub>=0.16.0
+
+# PaliGemma dependencies
+# Google's vision-language model (SigLIP + Gemma)
+transformers>=4.40.0
+torch>=2.0.0
+
+# Optional: for better performance
+accelerate>=0.20.0
+
+# Development dependencies (optional)
+pytest>=6.0.0

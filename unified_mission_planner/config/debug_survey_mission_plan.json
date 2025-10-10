@@ -1,0 +1,131 @@
+{
+    "mission_plan": {
+        "mission_id": "HETERO_MISSION_2022_12_10_093000",
+        "objective": "Survey the container stack near the ship loading crane using both MarineX USV and UAV.",
+        "total_steps": 5,
+        "estimated_duration": "15 minutes",
+        "steps": [
+            {
+                "step_id": 1,
+                "robot": "USV",
+                "action": "move_to",
+                "parameters": {
+                    "theta": {
+                        "x": -1460.0,
+                        "y": -72.0,
+                        "z": 1.0,
+                        "approach_speed": 2.0
+                    },
+                    "sigma": {
+                        "navigation_sensors": "active",
+                        "collision_avoidance": "enabled"
+                    }
+                },
+                "dependencies": [],
+                "description": "USV navigates to the launch point for the UAV."
+            },
+            {
+                "step_id": 2,
+                "robot": "UAV",
+                "action": "takeoff_to",
+                "parameters": {
+                    "theta": {
+                        "x": -1460.0,
+                        "y": -72.0,
+                        "z": 12.0,
+                        "climb_rate": 2.0
+                    },
+                    "sigma": {
+                        "flight_mode": "stable_hover",
+                        "sensors": "navigation_active"
+                    }
+                },
+                "dependencies": [1],
+                "description": "UAV takeoff from the USV after it reaches the launch point."
+            },
+            {
+                "step_id": 3,
+                "robot": "UAV",
+                "action": "survey_area",
+                "parameters": {
+                    "theta": {
+                        "x1": -1485.0,
+                        "y1": -115.0,
+                        "x2": -1440.0,
+                        "y2": -106.0,
+                        "altitude": 12.0
+                    },
+                    "sigma": {
+                        "method": "rectangular",
+                        "camera_mode": "high_resolution",
+                        "overlap": 30
+                    }
+                },
+                "dependencies": [2],
+                "description": "UAV surveys the container stack using a zigzag pattern for comprehensive coverage."
+            },
+            {
+                "step_id": 4,
+                "robot": "UAV",
+                "action": "fly_to",
+                "parameters": {
+                    "theta": {
+                        "x": -1460.0,
+                        "y": -72.0,
+                        "z": 10.0,
+                        "speed": 2.0
+                    },
+                    "sigma": {
+                        "flight_mode": "stable_hover",
+                        "sensors": "navigation_active"
+                    }
+                },
+                "dependencies": [3],
+                "description": "UAV flies to USV position for landing"
+            },
+            {
+                "step_id": 5,
+                "robot": "UAV",
+                "action": "land_on_usv",
+                "parameters": {
+                    "theta": {},
+                    "sigma": {
+                        "flight_mode": "precision_land",
+                        "sensors": "tracking_active"
+                    }
+                },
+                "dependencies": [4],
+                "description": "UAV lands on USV using odometry tracking"
+            },
+            {
+                "step_id": 6,
+                "robot": "USV",
+                "action": "move_to",
+                "parameters": {
+                    "theta": {
+                        "x": -1450.0,
+                        "y": -16.0,
+                        "z": 1.0,
+                        "approach_speed": 2.0
+                    },
+                    "sigma": {
+                        "navigation_sensors": "active",
+                        "collision_avoidance": "enabled"
+                    }
+                },
+                "dependencies": [5],
+                "description": "USV returns to the home base after UAV has landed safely."
+            }
+        ]
+    },
+    "dependency_graph": {
+        "spatial_dependencies": ["UAV maintains 10m minimum separation from obstacles"],
+        "sequential_dependencies": ["UAV actions depend on USV positioning"],
+        "causal_dependencies": ["USV navigation completion → UAV takeoff authorization"]
+    },
+    "execution_strategy": {
+        "coordination_points": ["Initial positioning", "Data collection", "Return sequence"],
+        "safety_constraints": ["Minimum separation distances", "Weather monitoring", "Communication requirements"],
+        "contingency_plans": ["Emergency return procedures", "Communication loss protocols", "System failure responses"]
+    }
+}
