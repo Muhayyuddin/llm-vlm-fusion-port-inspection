@@ -6,8 +6,7 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 
 ## Core Capabilities
 
-<div align="center">
-<table style="border-collapse: collapse; border: none; width: 100%;">
+<table style="border-collapse: collapse; border: none; width: 100%; margin: 0;">
 <tr>
 <td align="center" width="100%" style="padding: 0; border: none;">
 
