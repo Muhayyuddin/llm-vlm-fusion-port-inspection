@@ -11,7 +11,7 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 <td align="center" width="100%" style="padding: 0; border: none;">
 
 ### 🧭 Mapping & SLAM
-<img src="assets/mapping.gif" alt="Real-time SLAM and Mapping" width="380" style="margin: 0; padding: 0;"/>
+<img src="assets/mapping.gif" alt="Real-time SLAM and Mapping" width="400" style="margin: 0; padding: 0;"/>
 
 **Real-time Maritime SLAM**
 - Simultaneous Localization and Mapping
@@ -22,7 +22,7 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 <td align="center" width="100%" style="padding: 0; border: none;">
 
 ### 🚢 USV Navigation
-<img src="assets/usv-navigation.gif" alt="USV Autonomous Navigation" width="380" style="margin: 0; padding: 0;"/>
+<img src="assets/usv-navigation.gif" alt="USV Autonomous Navigation" width="400" style="margin: 0; padding: 0;"/>
 
 **Autonomous Navigation System**
 - Waypoint following and trajectory tracking
@@ -35,7 +35,7 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 <td align="center" width="100%" style="padding: 0; border: none;">
 
 ### 🛫 UAV Takeoff
-<img src="assets/takeoff.gif" alt="UAV Autonomous Takeoff" width="200" style="margin: 0; padding: 0;"/>
+<img src="assets/takeoff.gif" alt="UAV Autonomous Takeoff" width="250" style="margin: 0; padding: 0;"/>
 
 **Autonomous Takeoff Operations**
 - Vertical takeoff capabilities
@@ -45,7 +45,7 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 <td align="center" width="100%" style="padding: 0; border: none;">
 
 ### 🛬 UAV Landing
-<img src="assets/landing.gif" alt="UAV Autonomous Landing" width="200" style="margin: 0; padding: 0;"/>
+<img src="assets/landing.gif" alt="UAV Autonomous Landing" width="250" style="margin: 0; padding: 0;"/>
 
 **Autonomous Landing Operations**
 - Precision landing capabilities
@@ -57,7 +57,7 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 <td align="center" colspan="2" style="padding: 0; border: none;">
 
 ### 🚁 UAV Coordination
-<img src="assets/uav.gif" alt="UAV Autonomous Flight and Coordination" width="600" style="margin: 0; padding: 0;"/>
+<img src="assets/uav.gif" alt="UAV Autonomous Flight and Coordination" width="650" style="margin: 0; padding: 0;"/>
 
 **Autonomous UAV Operations** *(12x speed)*
 - 3D flight control and mission execution
