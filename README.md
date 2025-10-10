@@ -1,22 +1,15 @@
-# LLM-VLM Fusion: Intelligent Maritius Systems
-
-## 🌊 Overview
-
-The **LLM-VLM Fusion** project is an advanced autonomous maritime system that integrates Large Language Models (LLM) and Vision-Language Models (VLM) for intelligent control and coordination of heterogeneous USV-UAV operations. This system combines natural language understanding, computer vision, and autonomous navigation to enable sophisticated maritime missions including surveillance, inspection, and survey operations.
+# LLM-VLM Fusion Framework for Autonomous Maritime Port Inspection using a Heterogeneous UAV-USV system
+Maritime port inspection is essential for ensuring safety, regulatory compliance, and operational efficiency in complex maritime environments. Existing techniques are limited by manual effort and conventional computer vision methods, which face scalability issues and are restricted to detecting predefined objects without contextual understanding. To address these limitations, we propose a novel LLM-VLM fusion framework for autonomous maritime port inspection using heterogeneous UAV-USV systems. The approach replaces state machine-based mission planners with LLM-driven symbolic mission planning and enhances vision pipelines with VLM-based semantic inspection, enabling context-aware and scalable monitoring. The LLM translates natural language mission instructions into executable symbolic plans with dependency graphs that encode preconditions and inter-platform constraints, ensuring safe UAV-USV coordination. The VLM provides real-time multimodal analysis for anomaly detection and compliance assessment, generating structured inspection reports with semantic reasoning. The framework was validated in the extended MBZIRC Maritime Simulator with realistic port infrastructure and real-world trials. Results show GPT-4o achieves 94\% planning correctness with 86\% execution success in heterogeneous missions, while Qwen2-VL achieves 83\% semantic correctness in inspection tasks with inference times below 0.6 seconds. The lightweight on-board design enables deployment in resource-constrained maritime platforms, providing semantic reasoning, context-aware anomaly detection, and structured compliance reporting.
 
 ## Core Capabilities
-
 <table style="border-collapse: collapse; border: none; width: 100%; margin: 0;">
 <tr>
 <td align="center" width="100%" style="padding: 0; border: none;">
-
 ### 🧭 Mapping & SLAM
 <img src="assets/mapping.gif" alt="Real-time SLAM and Mapping" width="400" style="margin: 0; padding: 0;"/>
-
 **Real-time Maritime SLAM**
 - Simultaneous Localization and Mapping
 - Obstacle detection and avoidance
-
 
 </td>
 <td align="center" width="100%" style="padding: 0; border: none;">
@@ -27,7 +20,6 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 **Autonomous Navigation System**
 - Waypoint following and trajectory tracking
 - Real-time obstacle avoidance
-
 </td>
 </tr>
 
@@ -62,12 +54,9 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 **Autonomous UAV Operations** *(12x speed)*
 - 3D flight control and mission execution
 - Heterogeneous USV-UAV coordination
-
 </td>
 </tr>
 </table>
-
-## System Integration
 
 </td>
 </tr>
