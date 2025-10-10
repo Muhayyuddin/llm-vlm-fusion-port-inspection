@@ -59,25 +59,9 @@ Comprehensive UAV flight control with mission execution, inspection patterns, su
 ### 📂 `vlm_inspection/` - Vision-Language Model Inspection
 Multi-model VLM system (Florence, Quen2VL, SmolVLM) for real-time camera feed analysis, object detection, and automated inspection reports.
 
----
-
 ### 📂 `unified_mission_planner/` - LLM-based Mission Planning
-**Purpose**: Intelligent mission planning system using Large Language Models for heterogeneous USV-UAV coordination.
-
-**Key Features**:
-- **🧠 GPT-4 Integration**: Natural language mission interpretation
-- **📋 Symbolic Mission Planning**: Mathematical action framework
-- **🔗 Dependency Management**: Coordinated execution with preconditions
-- **🚢🚁 Heterogeneous Coordination**: Seamless USV-UAV collaboration
-- **📊 Survey Operations**: Advanced area coverage algorithms
-- **🔍 Inspection Missions**: Orbital and pattern-based inspections
-
-**Mathematical Framework**:
-```
-Action Set = {Takeoff, FlyTo, Survey, Record, Hover, Navigate, Dock, LandOnUSV, Inspect, Report, GoHome}
-Symbolic Action: τᵢ = aᵢ(robot, {θᵢ}, {σᵢ})
-Dependency Graph: P(τⱼ) = P_spatial ∪ P_seq ∪ P_causal
-```
+Intelligent mission planning system using GPT-4 for natural language mission interpretation and heterogeneous USV-UAV coordination.
+Features symbolic mission planning, dependency management, survey operations, and coordinated execution with preconditions.
 
 ## 🛠️ Installation & Setup
 
@@ -104,28 +88,55 @@ source install/setup.bash
 
 ## 🚀 Quick Start
 
-### 1. Launch Maritime Simulation
+### 1. Launch Maritime Simulation Environment
 ```bash
-# Start the maritime simulation environment
-ros2 launch mbzirc_ros competition_local.launch.py
+# Start the maritime simulation with coast-port environment
+ros2 launch mbzirc_ros competition_local.launch.py ign_args:="-v 4 -r coast-port.sdf"
 ```
 
-### 2. Start USV Navigation System
+### 2. Spawn USV with Sensors
 ```bash
-# Launch USV SLAM and navigation
-ros2 launch nav2 usv_navigation.launch.py
+# Spawn USV with LiDAR and RGBD camera
+ros2 launch mbzirc_ign spawn.launch.py name:=usv world:=coast model:=usv x:=-1450 y:=-16.5 z:=0.3 R:=0 P:=0 Y:=0 slot0:=mbzirc_planar_lidar slot1:=mbzirc_rgbd_camera
 
-# Start USV control system
-ros2 launch nav_packages usv_control_system.launch.py
+# Alternative: Spawn USV with HD camera and LiDAR
+ros2 launch mbzirc_ign spawn.launch.py name:=usv world:=coast model:=usv x:=-1450 y:=-16.5 z:=0.3 R:=0 P:=0 Y:=0 slot0:=mbzirc_hd_camera slot1:=mbzirc_planar_lidar
 ```
 
-### 3. Start UAV System
+### 3. Launch USV Systems
 ```bash
-# Launch UAV mission executor
-ros2 launch uav_navigation uav_mission_system.launch.py
+# Launch USV description and transforms
+ros2 launch usv_description usv.launch.py
+
+# Start mapping system
+ros2 launch ros2_mapping map_bringsup.launch.py
+
+# Start USV odometry publisher
+python3 ~/mbzirc_ws/src/nav_packages/navigation/navigation/usv_odometry_publisher.py
 ```
 
-### 4. Start Intelligent Mission Planner
+### 4. Launch UAV Systems
+```bash
+# Start UAV transform publisher
+ros2 run uav_llm_mission_planner uav_tf_publisher 
+
+# Start UAV mission executor
+ros2 run uav_llm_mission_planner uav_mission_executor 
+```
+
+### 5. Launch USV Control Systems
+```bash
+# Set Python path for USV control
+export PYTHONPATH=$PYTHONPATH:~/mbzirc_ws/src/nav_packages/usv_control/src
+
+# Start USV twist publisher
+ros2 run usv_control twist_publisher 
+
+# Start USV navigator
+python3 /home/muhayy/mbzirc_ws/src/nav_packages/navigation/navigation/navigator.py
+```
+
+### 6. Start Intelligent Mission Planner
 ```bash
 # Launch LLM-based heterogeneous mission planner
 ros2 launch unified_mission_planner heterogeneous_mission_system.launch.py
