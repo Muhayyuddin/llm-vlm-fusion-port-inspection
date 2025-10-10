@@ -66,6 +66,28 @@ The **LLM-VLM Fusion** project is an advanced autonomous maritime system that in
 
 </td>
 </tr>
+<tr>
+<td align="center" width="50%">
+
+### 🛫 UAV Takeoff
+<img src="assets/takeoff.gif" alt="UAV Autonomous Takeoff" width="600"/>
+
+**Autonomous Takeoff Operations**
+- Vertical takeoff capabilities
+- Flight initialization and stabilization
+
+</td>
+<td align="center" width="50%">
+
+### 🛬 UAV Landing
+<img src="assets/landing.gif" alt="UAV Autonomous Landing" width="600"/>
+
+**Autonomous Landing Operations**
+- Precision landing capabilities
+- USV deck landing coordination
+
+</td>
+</tr>
 </table>
 </div>
 
