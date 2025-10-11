@@ -1,4 +1,4 @@
-# LLM-VLM Fusion Framework for Autonomous Maritime Port Inspection using a Heterogeneous UAV-USV system
+# LLM-VLM Fusion Framework 
 
 Maritime port inspection is essential for ensuring safety, regulatory compliance, and operational efficiency in complex maritime environments. Existing techniques are limited by manual effort and conventional computer vision methods, which face scalability issues and are restricted to detecting predefined objects without contextual understanding. To address these limitations, we propose a novel LLM-VLM fusion framework for autonomous maritime port inspection using heterogeneous UAV-USV systems. The approach replaces state machine-based mission planners with LLM-driven symbolic mission planning and enhances vision pipelines with VLM-based semantic inspection, enabling context-aware and scalable monitoring. The LLM translates natural language mission instructions into executable symbolic plans with dependency graphs that encode preconditions and inter-platform constraints, ensuring safe UAV-USV coordination. The VLM provides real-time multimodal analysis for anomaly detection and compliance assessment, generating structured inspection reports with semantic reasoning. The framework was validated in the extended MBZIRC Maritime Simulator with realistic port infrastructure and real-world trials. Results show GPT-4o achieves 94\% planning correctness with 86\% execution success in heterogeneous missions, while Qwen2-VL achieves 83\% semantic correctness in inspection tasks with inference times below 0.6 seconds. The lightweight on-board design enables deployment in resource-constrained maritime platforms, providing semantic reasoning, context-aware anomaly detection, and structured compliance reporting.
 
@@ -83,11 +83,11 @@ Maritime port inspection is essential for ensuring safety, regulatory compliance
 
 This project implements a comprehensive autonomous maritime platform featuring:
 
-- **🗺️ USV SLAM & Navigation** (`nav2/`): Advanced SLAM and autonomous navigation system for maritime operations with real-time mapping, obstacle avoidance, and ROS2 Nav2 integration
-- **🎮 USV Control & Guidance** (`nav_packages/`): Low-level control systems featuring PID motion control, dynamic positioning, thrust allocation, and maritime dynamics modeling
-- **� UAV Control & Guidance** (`uav_navigation/`): Comprehensive UAV flight control with mission execution, inspection patterns, survey operations, and USV deck landing capabilities
-- **�️ Vision-Language Model Inspection** (`vlm_inspection/`): Multi-model VLM system (Florence, Quen2VL, SmolVLM) for real-time camera feed analysis, object detection, and automated inspection reports
-- **🤖 LLM-based Mission Planning** (`unified_mission_planner/`): Intelligent mission planning system using GPT-4 for natural language mission interpretation and heterogeneous USV-UAV coordination with symbolic planning, dependency management, and coordinated execution
+- **USV SLAM & Navigation** (`nav2/`): Advanced SLAM and autonomous navigation system for maritime operations with real-time mapping, obstacle avoidance, and ROS2 Nav2 integration
+- **USV Control & Guidance** (`nav_packages/`): Low-level control systems featuring PID motion control, dynamic positioning, thrust allocation, and maritime dynamics modeling
+- **UAV Control & Guidance** (`uav_navigation/`): Comprehensive UAV flight control with mission execution, inspection patterns, survey operations, and USV deck landing capabilities
+- **Vision-Language Model Inspection** (`vlm_inspection/`): Multi-model VLM system (Florence, Quen2VL, SmolVLM) for real-time camera feed analysis, object detection, and automated inspection reports
+- **LLM-based Mission Planning** (`unified_mission_planner/`): Intelligent mission planning system using GPT-4 for natural language mission interpretation and heterogeneous USV-UAV coordination with symbolic planning, dependency management, and coordinated execution
 
 ## System Requirements
 
