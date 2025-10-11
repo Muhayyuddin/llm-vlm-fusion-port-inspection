@@ -1,8 +1,6 @@
 # LLM-VLM Fusion Framework for Autonomous Maritime Port Inspection using a Heterogeneous UAV-USV system
 
-<div style="text-align: justify;">
 Maritime port inspection is essential for ensuring safety, regulatory compliance, and operational efficiency in complex maritime environments. Existing techniques are limited by manual effort and conventional computer vision methods, which face scalability issues and are restricted to detecting predefined objects without contextual understanding. To address these limitations, we propose a novel LLM-VLM fusion framework for autonomous maritime port inspection using heterogeneous UAV-USV systems. The approach replaces state machine-based mission planners with LLM-driven symbolic mission planning and enhances vision pipelines with VLM-based semantic inspection, enabling context-aware and scalable monitoring. The LLM translates natural language mission instructions into executable symbolic plans with dependency graphs that encode preconditions and inter-platform constraints, ensuring safe UAV-USV coordination. The VLM provides real-time multimodal analysis for anomaly detection and compliance assessment, generating structured inspection reports with semantic reasoning. The framework was validated in the extended MBZIRC Maritime Simulator with realistic port infrastructure and real-world trials. Results show GPT-4o achieves 94\% planning correctness with 86\% execution success in heterogeneous missions, while Qwen2-VL achieves 83\% semantic correctness in inspection tasks with inference times below 0.6 seconds. The lightweight on-board design enables deployment in resource-constrained maritime platforms, providing semantic reasoning, context-aware anomaly detection, and structured compliance reporting.
-</div>
 
 ## Core Capabilities
 <table style="border-collapse: collapse; border: none; width: 100%; margin: 0;">
@@ -40,7 +38,10 @@ Maritime port inspection is essential for ensuring safety, regulatory compliance
 <tr>
 <td align="center" colspan="2" style="padding: 0; border: none;">
 
-<img src="assets/uav.gif" alt="UAV Autonomous Flight and Coordination" width="700" style="margin: 0; padding: 0;"/>
+<video width="700" controls>
+  <source src="assets/uav-11.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 **Autonomous UAV Operations** *(12x speed)*
 </td>
@@ -122,7 +123,6 @@ source install/setup.bash
 # Start the maritime simulation with coast-port environment
 ros2 launch mbzirc_ros competition_local.launch.py ign_args:="-v 4 -r coast-port.sdf"
 ```
-
 ### 2. Spawn USV and UAV with Sensors
 ```bash
 # Spawn USV with LiDAR and RGBD camera
@@ -131,7 +131,6 @@ ros2 launch mbzirc_ign spawn.launch.py name:=usv world:=coast model:=usv x:=-145
 # Spawn UAV (quadrotor) with HD camera
 ros2 launch mbzirc_ign spawn.launch.py name:=quadrotor_1 world:=coast model:=mbzirc_quadrotor x:=-1450 y:=-16.5 z:=4.3 R:=0 P:=0 Y:=0 slot0:=mbzirc_hd_camera
 ```
-
 ### 3. Launch USV Systems
 ```bash
 # Launch USV description and transforms
@@ -143,7 +142,6 @@ ros2 launch ros2_mapping map_bringsup.launch.py
 # Start USV odometry publisher
 python3 ~/mbzirc_ws/src/nav_packages/navigation/navigation/usv_odometry_publisher.py
 ```
-
 ### 4. Launch UAV Systems
 ```bash
 # Start UAV transform publisher
@@ -152,7 +150,6 @@ ros2 run uav_llm_mission_planner uav_tf_publisher
 # Start UAV mission executor
 ros2 run uav_llm_mission_planner uav_mission_executor 
 ```
-
 ### 5. Launch USV Control Systems
 ```bash
 # Set Python path for USV control
@@ -164,13 +161,11 @@ ros2 run usv_control twist_publisher
 # Start USV navigator
 python3 ~/mbzirc_ws/src/nav_packages/navigation/navigation/navigator.py
 ```
-
 ### 6. Start Intelligent Mission Planner
 ```bash
 # Launch LLM-based heterogeneous mission planner
 ros2 launch unified_mission_planner heterogeneous_mission_system.launch.py
 ```
-
 ## 🔧 Configuration
 
 ### LLM Configuration
