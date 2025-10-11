@@ -38,10 +38,7 @@ Maritime port inspection is essential for ensuring safety, regulatory compliance
 <tr>
 <td align="center" colspan="2" style="padding: 0; border: none;">
 
-<video width="700" controls>
-  <source src="assets/uav-11.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="assets/uav-1.gif" alt="UAV Autonomous Flight and Coordination" width="700" style="margin: 0; padding: 0;"/>
 
 **Autonomous UAV Operations** *(12x speed)*
 </td>
