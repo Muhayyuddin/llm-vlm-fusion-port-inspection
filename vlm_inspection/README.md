@@ -1,6 +1,6 @@
 # VLM Inspection Package
 
-A ROS2 package for visual language model inspection using Microsoft's Florence-2 and Salesforce's BLIP2 models.
+A ROS2 package for visual language model inspection using Microsoft's Florence-2. This is a minimal application. Complete code with all the VLMs will be released upon acceptance 
 
 ## Overview
 
@@ -9,12 +9,10 @@ This package provides Florence-2 and BLIP2 integration for ROS2, allowing you to
 ## Features
 
 - **Florence-2 Integration**: Uses Microsoft's Florence-2 model for comprehensive image analysis
-- **BLIP2 Integration**: Uses Salesforce's BLIP2 model for image description and question answering
 - **ROS2 Nodes**: Real-time image processing via ROS2 topics
 - **Standalone Scripts**: Command-line tools for single image processing
 - **Multiple Tasks**: Supports various tasks (captioning, object detection, OCR, Q&A)
 - **Configurable**: Easy parameter configuration for different models and tasks
-- **Dual Model Support**: Run both models simultaneously or independently
 
 ## Installation
 
@@ -48,38 +46,13 @@ source install/setup.bash
 ros2 launch vlm_inspection florence_launch.py
 ```
 
-#### Launch BLIP2 Node
-
-```bash
-ros2 launch vlm_inspection blip2_launch.py
-```
-
-#### Launch Both Models
-
-```bash
-# Launch both models
-ros2 launch vlm_inspection vlm_dual_launch.py enable_florence:=true enable_blip2:=true
-
-# Launch only Florence-2
-ros2 launch vlm_inspection vlm_dual_launch.py enable_florence:=true enable_blip2:=false
-
-# Launch only BLIP2
-ros2 launch vlm_inspection vlm_dual_launch.py enable_florence:=false enable_blip2:=true
-```
-
 #### Florence-2 Parameters
 
 - `model_name`: Florence-2 model to use (default: "microsoft/Florence-2-large")
 - `default_task`: Default task for image description (default: "<MORE_DETAILED_CAPTION>")
 - `auto_load_model`: Whether to load model automatically on startup (default: true)
 
-#### BLIP2 Parameters
 
-- `model_name`: BLIP2 model to use (default: "Salesforce/blip2-flan-t5-xl")
-- `input_topic`: Input image topic (default: "/camera/image_raw")
-- `output_topic`: Output description topic (default: "/blip2/description")
-- `question_topic`: Input question topic (default: "/blip2/question")
-- `answer_topic`: Output answer topic (default: "/blip2/answer")
 
 #### Topics
 
@@ -87,13 +60,6 @@ ros2 launch vlm_inspection vlm_dual_launch.py enable_florence:=false enable_blip
 - **Subscribed**: `input_image` (sensor_msgs/Image) → `/camera/image_raw`
 - **Published**: `image_description` (std_msgs/String) → `/florence/description`
 
-**BLIP2 Topics:**
-- **Subscribed**: 
-  - `input_image` (sensor_msgs/Image) → `/camera/image_raw`
-  - `question` (std_msgs/String) → `/blip2/question`
-- **Published**: 
-  - `image_description` (std_msgs/String) → `/blip2/description`
-  - `image_answer` (std_msgs/String) → `/blip2/answer`
 
 #### Example Usage
 
@@ -107,34 +73,6 @@ ros2 run usb_cam usb_cam_node_exe
 
 # Listen to descriptions
 ros2 topic echo /florence/description
-```
-
-**BLIP2:**
-```bash
-# Launch BLIP2 node
-ros2 launch vlm_inspection blip2_launch.py
-
-# In another terminal, publish an image
-ros2 run usb_cam usb_cam_node_exe
-
-# Listen to descriptions
-ros2 topic echo /blip2/description
-
-# Ask questions about the image
-ros2 topic pub /blip2/question std_msgs/String "data: 'What do you see in this image?'"
-
-# Listen to answers
-ros2 topic echo /blip2/answer
-```
-
-**Both Models:**
-```bash
-# Launch both models
-ros2 launch vlm_inspection vlm_dual_launch.py enable_florence:=true enable_blip2:=true
-
-# Compare descriptions
-ros2 topic echo /florence/description &
-ros2 topic echo /blip2/description &
 ```
 
 ### Standalone Script
@@ -168,12 +106,6 @@ ros2 run vlm_inspection image_describer /path/to/your/image.jpg --verbose
 - `<OCR>`: Optical character recognition
 - `<OCR_WITH_REGION>`: OCR with region information
 
-### BLIP2 Models
-
-- `Salesforce/blip2-opt-2.7b`: BLIP2 with OPT-2.7B (faster, smaller)
-- `Salesforce/blip2-opt-6.7b`: BLIP2 with OPT-6.7B
-- `Salesforce/blip2-flan-t5-xl`: BLIP2 with Flan-T5-XL (default, good balance)
-- `Salesforce/blip2-flan-t5-xxl`: BLIP2 with Flan-T5-XXL (largest, best quality)
 
 ## Configuration
 
