@@ -5,16 +5,14 @@ Maritime port inspection is essential for ensuring safety, regulatory compliance
 # Citation 
 Please cite below if you use this work 
 ```
-@article{DIN2026305,
-title = {LLM–VLM fusion framework for autonomous maritime port inspection using a heterogeneous UAV–USV System},
-journal = {Alexandria Engineering Journal},
-volume = {141},
-pages = {305-322},
-year = {2026},
-issn = {1110-0168},
-doi = {https://doi.org/10.1016/j.aej.2026.03.013},
-url = {https://www.sciencedirect.com/science/article/pii/S1110016826001626},
-author = {Muhayy Ud Din and Waseem Akram and Ahsan B. Bakht and Irfan Hussain}
+@misc{din2026,
+      title={LLM-VLM Fusion Framework for Autonomous Maritime Port Inspection using a Heterogeneous UAV-USV System}, 
+      author={Muhayy Ud Din and Waseem Akram and Ahsan B. Bakht and Irfan Hussain},
+      year={2026},
+      eprint={2601.13096},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2601.13096}, 
 }
 ```
 
